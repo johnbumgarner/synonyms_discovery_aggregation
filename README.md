@@ -28,10 +28,12 @@ The code within this repository will look at several common NLP modules used to 
 PyDictionary is a module for Python 2.x and Python 3.x that queries synonym.com for the synonyms and antonyms of a word.  It does have some capabilities to translate words via Google Translations and obtain the definition of a word. 
 
     from PyDictionary import PyDictionary
-dictionary = PyDictionary()
-synonym = dictionary.synonym('mother')
-print(synonym)
-['mother-in-law', 'female parent', 'supermom', 'mum', 'parent', 'mom', 'momma', 'para I', 'mama', 'mummy', 'quadripara', 'mommy', 'quintipara', 'ma', 'puerpera', 'surrogate mother', 'mater', 'primipara', 'mammy', 'mamma']
+    
+    dictionary = PyDictionary()
+    synonym = dictionary.synonym('mother')
+    print(synonym)
+    # output 
+    ['mother-in-law', 'female parent', 'supermom', 'mum', 'parent', 'mom', 'momma', 'para I', 'mama', 'mummy', 'quadripara', 'mommy', 'quintipara', 'ma', 'puerpera', 'surrogate mother', 'mater', 'primipara', 'mammy', 'mamma']
 
 
 

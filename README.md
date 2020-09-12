@@ -18,7 +18,7 @@ If you want to understand the complexity of this synonym relationship problem se
 The code within this repository will look at several common NLP modules used to determine synonyms for words (a.k.a tokens) within a corpus.  These methods included:
   
   * PyDictionary - https://pypi.org/project/PyDictionary
-  * WordNet - 
+  * WordNet - https://www.nltk.org/howto/wordnet.html
 </p>
 
 ## PyDictionary
@@ -31,11 +31,23 @@ PyDictionary is a module for Python 2.x and Python 3.x that queries synonym.com 
     
     dictionary = PyDictionary()
     synonym = dictionary.synonym('mother')
+    
     print(synonym)
     # output 
     ['mother-in-law', 'female parent', 'supermom', 'mum', 'parent', 'mom', 'momma', 'para I', 'mama', 'mummy', 
     'quadripara', 'mommy', 'quintipara', 'ma', 'puerpera', 'surrogate mother', 'mater', 'primipara', 'mammy', 'mamma']
+    
+Note the word "mum" is included in the synonyms for "mother". Whereas the synonyms for the word "mum" does not include the word "mother."
 
-
-
+    synonym = dictionary.synonym('mum')
+    
+    print(synonym)
+    # output 
+    ['incommunicative', 'silent', 'uncommunicative']
 </p>
+
+## WordNet
+<p align="justify">
+  
+</p>
+

@@ -17,12 +17,14 @@ If you want to understand the complexity of this synonym relationship problem se
 <p align="justify">
 The code within this repository will look at several common NLP modules used to determine synonyms for words (a.k.a tokens) within a corpus.  These methods included:
   
-  * PyDictionary 
-  * WordNet
+  * PyDictionary - https://pypi.org/project/PyDictionary
+  * WordNet - 
 </p>
 
 ## PyDictionary
 
 <p align="justify">
   
+PyDictionary is a module for Python 2.x and 3.x that queries synonym.com for the synonyms and antonyms of a word.  It does have some capabilities to translate words via Google Translations. 
+
 </p>

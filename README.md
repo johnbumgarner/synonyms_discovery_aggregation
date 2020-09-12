@@ -7,8 +7,8 @@ Finding a synonym for a specific word is easy for a human to do using a thesauru
 <p align="justify">
 For instance. considering this text:
 
-<i>"My mom always likes to receive mums on Mother's day."</i>
+<b><i>"My mom always likes to receive mums on Mother's day."</i></b>
 
-A human reading this text would instantly know that "mom" and "mother" are related and "mums" is referring to flowers.  A computer would have some difficulty in determining the similarities or non-similarities between words in this sentence. 
+A human reading this text would instantly know that "mom" and "mother" are related and "mums" is referring to flowers.  A computer would have some difficulty in determining the similarities or non-similarities between these words in this sentence. 
 </p>
 

@@ -5,9 +5,10 @@ Finding a synonym for a specific word is easy for a human to do using a thesauru
 </p>
 
 <p align="justify">
-  <i>For instance. considering this text:</i>
+For instance. considering this text:
 
-"My mom always likes to receive mums on Mother's day."
+<i>"My mom always likes to receive mums on Mother's day."</i>
 
+A human reading this text would instantly know that "mom" and "mother" are related and "mums" is referring to flowers.  A computer would have some difficulty in determining the similarities or non-similarities between words in this sentence. 
 </p>
 

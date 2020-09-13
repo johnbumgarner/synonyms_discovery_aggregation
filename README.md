@@ -19,6 +19,8 @@ The code within this repository will look at several common NLP modules used to 
   
   * PyDictionary - https://pypi.org/project/PyDictionary
   * WordNet - https://www.nltk.org/howto/wordnet.html
+  * spacy - https://spacy.io/
+  
 </p>
 
 ## PyDictionary
@@ -54,40 +56,40 @@ Note the word "mum" is included in the synonyms for "mother". Whereas the synony
     
     # synsets is used to obtain synonyms for a word
     for synonym in wn.synsets('mother'):
-      print (synonym)
-      # output 
-      Synset('mother.n.01')
-      Synset('mother.n.02')
-      Synset('mother.n.03')
-      Synset('mother.n.04')
-      Synset('mother.n.05')
-      Synset('mother.v.01')
-      Synset('beget.v.01')
+       print (synonym)
+       # output 
+       Synset('mother.n.01')
+       Synset('mother.n.02')
+       Synset('mother.n.03')
+       Synset('mother.n.04')
+       Synset('mother.n.05')
+       Synset('mother.v.01')
+       Synset('beget.v.01')
    
  The output above shows that WordNet found 5 nouns and 2 verbs in its database for the word "mother."  We can gather more precise data by querying the lemmas, 
  which is the canonical form for a set of words. 
     
     for synonym in wn.synsets('mother'):
-    for item in synonym.lemmas():
-        print(item)
-        # output 
-        Lemma('mother.n.01.mother')
-        Lemma('mother.n.01.female_parent')
-        Lemma('mother.n.02.mother')
-        Lemma('mother.n.03.mother')
-        Lemma('mother.n.04.mother')
-        Lemma('mother.n.05.mother')
-        Lemma('mother.v.01.mother')
-        Lemma('mother.v.01.fuss')
-        Lemma('mother.v.01.overprotect')
-        Lemma('beget.v.01.beget')
-        Lemma('beget.v.01.get')
-        Lemma('beget.v.01.engender')
-        Lemma('beget.v.01.father')
-        Lemma('beget.v.01.mother')
-        Lemma('beget.v.01.sire')
-        Lemma('beget.v.01.generate')
-        Lemma('beget.v.01.bring_forth')
+       for item in synonym.lemmas():
+          print(item)
+          # output 
+          Lemma('mother.n.01.mother')
+          Lemma('mother.n.01.female_parent')
+          Lemma('mother.n.02.mother')
+          Lemma('mother.n.03.mother')
+          Lemma('mother.n.04.mother')
+          Lemma('mother.n.05.mother')
+          Lemma('mother.v.01.mother')
+          Lemma('mother.v.01.fuss')
+          Lemma('mother.v.01.overprotect')
+          Lemma('beget.v.01.beget')
+          Lemma('beget.v.01.get')
+          Lemma('beget.v.01.engender')
+          Lemma('beget.v.01.father')
+          Lemma('beget.v.01.mother')
+          Lemma('beget.v.01.sire')
+          Lemma('beget.v.01.generate')
+          Lemma('beget.v.01.bring_forth')
         
 The output in the example above shows the synonyms for the noun and verbs for the word "mother" withing WordNet.  This output can be further refined by querying for specific parts of speech.  The example below is querying for nouns. 
 
@@ -113,4 +115,30 @@ The output in the example above shows the synonyms for the noun and verbs for th
             mammy
             mum
             mummy
+           
+</p>
+
+## Spacy
+
+<p align="justify">
+  
+ 
+    import spacy
+    
+    # Used to download one of Spacy's core models.
+    # English Models:
+    # 1. en_core_web_lg
+    # 2. en_core_web_md
+    # 3. en_core_web_sm
+    # spacy.cli.download("en_core_web_md")
+    
+    nlp = spacy.load("en_core_web_md")
+    tokens = nlp("ma mama mommy mother mum mummy")
+
+    for token1 in tokens:
+       for token2 in tokens:
+          if token1.text != token2.text:
+            print(token1.text, token2.text, token1.similarity(token2))
+
+  
 </p>

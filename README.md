@@ -11,7 +11,7 @@ For instance, considering this text:
 
 A human reading this text would instantly know that "mom" and "mother" are related and "mums" is referring to flowers, so its not related to the formers.  A computer would have some difficulty in determining the similarities or non-similarities between these words.  This problem is further compounded if someone is trying to measure the frequency of words within a their corpus.  
 
-If you want to understand the complexity of this synonym relationship problem search for 'automatic synonym extraction' or 'automatic synonyms identification.' Producing a detail synonym list for each word in a corpus is hard and will often require a multiple prong approach, espcially if accuracy or precision is important.
+If you want to understand the complexity of this synonym relationship problem search for terms 'automatic synonym detection' or 'automatic synonym extraction' or 'automatic synonyms identification.' Producing a detail synonym list for each word in a corpus is hard and will often require a multiple prong approach, espcially if accuracy or precision is important.
 </p>
 
 <p align="justify">
@@ -21,7 +21,7 @@ The code within this repository will look at several common NLP modules used to 
   * WordNet - https://www.nltk.org/howto/wordnet.html
   * spaCy - https://spacy.io/
   * Word2Vec - https://radimrehurek.com/gensim/index.html
-  
+  * fastText - 
 </p>
 
 ## PyDictionary
@@ -116,8 +116,7 @@ The output in the example above shows the synonyms for the noun and verbs for th
             mommy
             mammy
             mum
-            mummy
-           
+            mummy       
 </p>
 
 ## spaCy
@@ -202,3 +201,49 @@ Cosine similarity can range from -1 to 1 based on the angle between the two vect
 
 Based on the size of our corpus, Word2vec is an inappropriate technology to determine the similarities or non-similarities between words.
 </p>
+
+# fastText
+
+<p align="justify">
+fastText was created by Facebook AI Research (FAIR) lab and is a library for efficient learning of word representations and sentence classification. FastText combines some of the most successful concepts of Natural Language Processing and machine learning in a single module.  Some of the concepts include representing sentences with bag of words and bag of n-grams, as well as using subword information, and sharing information across classes through a hidden representation. 
+  
+    import fasttext.util
+    
+    # The following was used to download a pretrained model in the English language
+    # fasttext.util.download_model('en', if_exists='ignore')
+    
+    ft = fasttext.load_model('cc.en.300.bin')
+    
+    # "k" is the number of items to include in the output
+    results = ft.get_nearest_neighbors('mom', k=10)
+    for item in results:
+       print(item)
+       # output 
+       (0.8316885828971863, 'father')
+       (0.8139842748641968, 'grandmother')
+       (0.8042423725128174, 'daughter')
+       (0.7595430612564087, 'aunt')
+       (0.7551708221435547, 'stepfather')
+       (0.7433159947395325, 'mom')
+       (0.7390366792678833, 'step-father')
+       (0.7379246950149536, 'stepmother')
+       (0.7268661856651306, 'step-mother')
+       (0.7265076041221619, 'sister')
+       (0.7254297137260437, 'son')
+       (0.7242798805236816, 'mother-in-law')
+       (0.7103716135025024, 'husband')
+       (0.707595944404602, 'wife')
+       (0.693300187587738, 'daughter-in-law')
+       (0.6749315857887268, 'sister-in-law')
+       (0.6736578345298767, 'mother.She')
+       (0.6697360873222351, 'granddaughter')
+       (0.6673513650894165, 'step-daughter')
+       (0.6669045686721802, 'dad')
+       (0.664728045463562, 'mother.It')
+       (0.6594554781913757, 'daughters')
+       (0.659233808517456, 'great-grandmother')
+       (0.6584458947181702, 'birth-mother')
+  
+Interpreting these results is overly complex, especially for discovering synonyms within a corpus. fastText like Word2vec is an inappropriate technology to find synonyms for a specific word.  
+<p>
+

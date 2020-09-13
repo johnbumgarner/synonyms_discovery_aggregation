@@ -91,27 +91,26 @@ Note the word "mum" is included in the synonyms for "mother". Whereas the synony
         
 The output in the example above shows the synonyms for the noun and verbs for the word "mother" withing WordNet.  This output can be further refined by querying for specific parts of speech.  The example below is querying for nouns. 
 
-       for synonym in wn.synsets('mother', wn.NOUN):
-         for item in synonym.lemmas():
-           if 'mother' != item.name():
-             print(item.name())
-             # output 
-             female_parent
-
+    for synonym in wn.synsets('mother', wn.NOUN):
+       for item in synonym.lemmas():
+          if 'mother' != item.name():
+            print(item.name())
+            # output 
+            female_parent
 
  Note the only synonym for "mother" is "female_parent."  But for the word "mom" there are 8 synonyms and not one is "mother." 
  
-       for synonym in wn.synsets('mom', wn.NOUN):
-         for item in synonym.lemmas():
-           if 'mom' != item.name():
-             print(item.name())
-             # output 
-             ma
-             mama
-             mamma
-             momma
-             mommy
-             mammy
-             mum
-             mummy
+    for synonym in wn.synsets('mom', wn.NOUN):
+       for item in synonym.lemmas():
+          if 'mom' != item.name():
+            print(item.name())
+            # output 
+            ma
+            mama
+            mamma
+            momma
+            mommy
+            mammy
+            mum
+            mummy
 </p>

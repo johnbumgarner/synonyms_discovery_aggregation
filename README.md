@@ -37,7 +37,7 @@ PyDictionary is a module for Python 2.x and Python 3.x that queries synonym.com 
     ['mother-in-law', 'female parent', 'supermom', 'mum', 'parent', 'mom', 'momma', 'para I', 'mama', 'mummy', 
     'quadripara', 'mommy', 'quintipara', 'ma', 'puerpera', 'surrogate mother', 'mater', 'primipara', 'mammy', 'mamma']
     
-Note the word "mum" is included in the synonyms for "mother". Whereas the synonyms for the word "mum" does not include the word "mother."
+Note the word "mum" is included in the synonyms for "mother". Whereas the synonyms for the word "mum" do not include the word "mother."
 
     synonym = dictionary.synonym('mum')
     
@@ -48,6 +48,70 @@ Note the word "mum" is included in the synonyms for "mother". Whereas the synony
 
 ## WordNet
 <p align="justify">
-  
-</p>
 
+
+    from nltk.corpus import wordnet as wn
+    
+    # synsets is used to obtain synonyms for a word
+    for synonym in wn.synsets('mother'):
+      print (synonym)
+      # output 
+      Synset('mother.n.01')
+      Synset('mother.n.02')
+      Synset('mother.n.03')
+      Synset('mother.n.04')
+      Synset('mother.n.05')
+      Synset('mother.v.01')
+      Synset('beget.v.01')
+   
+ The output above shows that WordNet found 5 nouns and 2 verbs in its database for the word "mother."  We can gather more precise data by querying the lemmas, 
+ which is the canonical form for a set of words. 
+    
+    for synonym in wn.synsets('mother'):
+    for item in synonym.lemmas():
+        print(item)
+        # output 
+        Lemma('mother.n.01.mother')
+        Lemma('mother.n.01.female_parent')
+        Lemma('mother.n.02.mother')
+        Lemma('mother.n.03.mother')
+        Lemma('mother.n.04.mother')
+        Lemma('mother.n.05.mother')
+        Lemma('mother.v.01.mother')
+        Lemma('mother.v.01.fuss')
+        Lemma('mother.v.01.overprotect')
+        Lemma('beget.v.01.beget')
+        Lemma('beget.v.01.get')
+        Lemma('beget.v.01.engender')
+        Lemma('beget.v.01.father')
+        Lemma('beget.v.01.mother')
+        Lemma('beget.v.01.sire')
+        Lemma('beget.v.01.generate')
+        Lemma('beget.v.01.bring_forth')
+        
+The output in the example above shows the synonyms for the noun and verbs for the word "mother" withing WordNet.  This output can be further refined by querying for specific parts of speech.  The example below is querying for nouns. 
+
+       for synonym in wn.synsets('mother', wn.NOUN):
+         for item in synonym.lemmas():
+           if 'mother' != item.name():
+             print(item.name())
+             # output 
+             female_parent
+
+
+ Note the only synonym for "mother" is "female_parent."  But for the word "mom" there are 8 synonyms and not one is "mother." 
+ 
+       for synonym in wn.synsets('mom', wn.NOUN):
+         for item in synonym.lemmas():
+           if 'mom' != item.name():
+             print(item.name())
+             # output 
+             ma
+             mama
+             mamma
+             momma
+             mommy
+             mammy
+             mum
+             mummy
+</p>

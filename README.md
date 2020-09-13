@@ -139,6 +139,37 @@ The output in the example above shows the synonyms for the noun and verbs for th
        for token2 in tokens:
           if token1.text != token2.text:
             print(token1.text, token2.text, token1.similarity(token2))
+            # output
+            ma mama 0.45430169
+            ma mommy 0.3033895
+            ma mother 0.21534154
+            ma mum 0.2967731
+            ma mummy 0.3033895
+            mama ma 0.45430169
+            mama mommy 0.79760563
+            mama mother 0.57990664
+            mama mum 0.6100797
+            mama mummy 0.79760563
+            mommy ma 0.3033895
+            mommy mama 0.79760563
+            mommy mother 0.5663006
+            mommy mum 0.62942785
+            mommy mummy 0.99999994
+            mother ma 0.21534154
+            mother mama 0.57990664
+            mother mommy 0.5663006
+            mother mum 0.67080754
+            mother mummy 0.5663006
+            mum ma 0.2967731
+            mum mama 0.6100797
+            mum mommy 0.62942785
+            mum mother 0.67080754
+            mum mummy 0.62942785
+            mummy ma 0.3033895
+            mummy mama 0.79760563
+            mummy mommy 0.99999994
+            mummy mother 0.5663006
+            mummy mum 0.62942785
 
   
 </p>

@@ -19,7 +19,7 @@ The code within this repository will look at several common NLP modules used to 
   
   * PyDictionary - https://pypi.org/project/PyDictionary
   * WordNet - https://www.nltk.org/howto/wordnet.html
-  * spacy - https://spacy.io/
+  * spaCy - https://spacy.io/
   
 </p>
 
@@ -118,11 +118,13 @@ The output in the example above shows the synonyms for the noun and verbs for th
            
 </p>
 
-## Spacy
+## spaCy
 
 <p align="justify">
   
-The code below will compute a semantic similarity estimate using token.similarity.  The higher the scalar similarity score the more similar tokens are to each other. The tokens being used are from the sentence <i>"My mom always likes to receive mums on Mother's day."</i>.  The sentence text has been normalized to remove all punctuations and English stopwords(e.g., to, on). 
+spaCy is a library used for advanced Natural Language Processing.  This library is popular for processing and analyzing unstructured textual data at scale. One of the built-in capabilities of spaCy is object comparisons. spaCy will predict how similar 2 objects (words) are to each other. Predicting similarity is useful for flagging duplicate words or determine potential relationships between words.  
+
+The code below will compute a semantic similarity estimate using spaCy's token.similarity.  The higher the scalar similarity score the more similar tokens are to each other. The tokens being used are from the sentence <i>"My mom always likes to receive mums on Mother's day."</i>.  The sentence text has been normalized to remove all punctuations and English stopwords(e.g., to, on). 
 
 Any token associated with a score of 1.O (perfect match) or less than 0.50 have been filtered out of the final results. 
 
@@ -152,8 +154,15 @@ Any token associated with a score of 1.O (perfect match) or less than 0.50 have 
             mothers mums 0.7151191
             day always 0.505295
 
-The output above correcty associated tokens, such as "mom," "mothers" and "mums," because they are synonyms of one another. But in input sentence the word "mums" was referring to flowers, so the word's association with the "mom" and "mothers" is incorrect based on context.  
+The output above correcty associated tokens, such as "mom," "mothers" and "mums," because they are synonyms of one another. But in the input sentence the word "mums" was referring to flowers, so the word's association with the "mom" and "mothers" is incorrect based on context.  For the sake of brevity, I did not included the code for the following similarities examples, because on the token section changed.  
 
      mother father 0.82982457
+     father daddy 0.5511614
   
+ Note that the tokens "mother" and "father" have a high similarity score, whereas the words "father" and "daddy," have a lesser similarity score.  In the example 
+ below we can see that "father" and "dad" have a higher similarity score than "father" and "daddy," but a lesser score than "mother" and "father." 
+ 
+     father dad 0.7914408
+ 
+Overall spaCy's token.similarity function did ok with determining the potential relationships between two words. The spaCy library is a powerful Natural Language Processing application, so it's worth the effort to explore the documentation to discover all the library's capabilities. 
 </p>

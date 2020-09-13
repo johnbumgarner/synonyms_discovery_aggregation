@@ -20,13 +20,13 @@ The code within this repository will look at several common NLP modules used to 
   * PyDictionary - https://pypi.org/project/PyDictionary
   * WordNet - https://www.nltk.org/howto/wordnet.html
   * spaCy - https://spacy.io/
+  * Word2Vec - https://radimrehurek.com/gensim/index.html
   
 </p>
 
 ## PyDictionary
 
 <p align="justify">
-  
 PyDictionary is a module for Python 2.x and Python 3.x that queries synonym.com for the synonyms and antonyms of a word.  It does have some capabilities to translate words via Google Translations and obtain the definition of a word. 
 
     from PyDictionary import PyDictionary
@@ -49,8 +49,8 @@ Note the word "mum" is included in the synonyms for "mother". Whereas the synony
 </p>
 
 ## WordNet
-<p align="justify">
 
+<p align="justify">
 WordNet is a lexical database for the English language, which was originally created by Princeton University. The database is currently part of the NLTK corpus
 This database can be used with the Natural Language Toolkit(NLTK) to find the meanings of words, synonyms, antonyms and other linguistica categories. 
 
@@ -123,7 +123,6 @@ The output in the example above shows the synonyms for the noun and verbs for th
 ## spaCy
 
 <p align="justify">
-  
 spaCy is a library used for advanced Natural Language Processing.  This library is popular for processing and analyzing unstructured textual data at scale. One of the built-in capabilities of spaCy is object comparisons. spaCy will predict how similar 2 objects (words) are to each other. Predicting similarity is useful for flagging duplicate words or determine potential relationships between words.  
 
 The code below will compute a semantic similarity estimate using spaCy's token.similarity.  The higher the scalar similarity score the more similar tokens are to each other. The tokens being used are from the sentence <i>"My mom always likes to receive mums on Mother's day."</i>.  The sentence text has been normalized to remove all punctuations and English stopwords(e.g., to, on). 
@@ -167,4 +166,39 @@ The output above correcty associated tokens, such as "mom," "mothers" and "mums,
      father dad 0.7914408
  
 Overall spaCy's token.similarity function did ok with determining the potential relationships between two words. The spaCy library is a powerful Natural Language Processing application, so it's worth the effort to explore the documentation to discover all the library's capabilities. 
+</p>
+
+## Word2Vec
+
+<p align="justify">
+Word2vec is a technique for Natural Language Processing. The Word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence.
+
+<b>Please note:</b> Word2Vec needs <i>large</i>, varied text examples to create its "dense" embedding vectors per word. It is the competition between many contrasting examples during training which allows the word-vectors to move to positions that have interesting distances and spatial-relationships with each other. 
+If your corpus only contains 50 words then Word2vec is unlikely an appropriate technology to find synonymous for words.
+
+The code below is only for educational purposes, because the corpus being used is too small. 
+
+    import gensim
+    from gensim.models import Word2Vec
+
+    # Since the data is contained within a list it must be wrapped into another list, so that it can be interpreted correctly.
+    data = ['mom', 'always', 'likes', 'receive', 'mums', 'mother', 'day']
+    
+    # size is the dimensionality of the vector, which in this case is small.
+    # corpuses consisting of tens-of-thousands of words might justify 100-dimensional word-vectors. 
+    # 
+    # window size of 2 creates vectors that scored best on the analogies-evaluation. 
+    model1 = gensim.models.Word2Vec([data], min_count=1, size=2, window=2)
+
+    print(f"The words 'mother' and 'mom' have a cosine similarity score of: {model1.wv.similarity('mother', 'mom')}")
+    print(f"The words 'mother' and 'mums' have a cosine similarity score of: {model1.wv.similarity('mother', 'mums')}")
+    print(f"The words 'mom' and 'mums' have a cosine similarity score of: {model1.wv.similarity('mom', 'mums')}")
+    # output
+    The words 'mother' and 'mom' have a cosine similarity score of: 0.8387100696563721
+    The words 'mother' and 'mums' have a cosine similarity score of: -0.988419771194458
+    The words 'mom' and 'mums' have a cosine similarity score of: -0.9116343259811401
+
+Cosine similarity can range from -1 to 1 based on the angle between the two vectors being compared. A value of 1 is a perfect relationship between word vectors (e.g., "mother" compared with "mother"), whereas a value of 0 represents no relationship between words, and a value of -1 represents a perfect opposite relationship between words. A negative similarity means the two words (e.g., "mom" compared with "mums"  are related in component, but in an opposite (or negative) fashion.  
+
+Based on the size of our corpus, Word2vec is an inappropriate technology to determine the similarities or non-similarities between words.
 </p>

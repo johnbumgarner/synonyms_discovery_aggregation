@@ -21,7 +21,7 @@ The code within this repository will look at several common NLP modules used to 
   * WordNet - https://www.nltk.org/howto/wordnet.html
   * spaCy - https://spacy.io/
   * Word2Vec - https://radimrehurek.com/gensim/index.html
-  * fastText - 
+  * fastText - https://fasttext.cc/
 </p>
 
 ## PyDictionary

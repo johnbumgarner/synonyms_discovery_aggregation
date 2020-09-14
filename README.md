@@ -5,7 +5,7 @@ Finding a synonym for a specific word is easy for a human to do using a thesauru
 </p>
 
 <p align="justify">
-For instance, considering this text:
+For instance, consider this text:
 
 <i>"My mom always likes to receive mums on Mother's day."</i>
 

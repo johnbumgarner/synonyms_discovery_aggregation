@@ -294,5 +294,19 @@ A dictionary approach is useful for a small corpus, but it is hard to scale when
 # Web scraping approach
 
 <p align="justify">
-To do...
+
+Another method to acquire synonyms is through web scraping (also known as, web data extraction or web harvesting).  This automative technique can be used to extract and aggregate synonyms from mutiple sources thus building a more comprehensive list for each word. Some of the primary online sources including Collins Dictionary and synonyms.com.  The latter is the source queried by PyDictionary. 
+
+Here is an basic web scraping example for thesaurus.com: 
+
+    import requests
+
+    req = requests.get(f'https://tuna.thesaurus.com/pageData/mother')
+    dict_synonyms = req.json()['data']['definitionData']['definitions'][0]['synonyms']
+    synonyms = [r["term"] for r in dict_synonyms]
+    print(sorted(synonyms))
+    # output
+    ['ancestor', 'child-bearer', 'creator', 'forebearer', 'mom', 'mommy', 'origin', 'parent', 'predecessor', 'procreator', 'progenitor', 'source']
+
+The example above queries the API used by thesaurus.com, because the primary website employ dynamic content creation, which can severely impact automative data extraction.  Another countermeasure often used by websites are connection threshold limits.  These thresholds can be linked to the number of conenctions per second from a given host.  Once such a threshold is met a website can automatically drop the external host connections and in some cases block the IP address. Websites also continually modify their code, so web scrapers will require maintenance related to any code changes that impact scraping operations.
 <p>

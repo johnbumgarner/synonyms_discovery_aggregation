@@ -252,8 +252,7 @@ Interpreting these results is overly complex, especially for discovering synonym
 
 <p align="justify">
   
-Using a plain old dictionary approach is possible depending on the size of the corpus and your use case for discovering and cross-referring the synonyms within the 
-corpus.
+Using a plain old dictionary approach is possible depending on the size of the corpus and your use case for discovering and cross-referencing the synonyms within the corpus.
 
     import string
 
@@ -289,5 +288,11 @@ corpus.
       ['mother', 'mom', 1]
       ['mother', '', 1]
 
-A dictionary approach is useful for a small corpus, but it is hard to scale when the corpus grows.  
+A dictionary approach is useful for a small corpus, but it is hard to scale when the corpus expands.  
+<p>
+  
+# Web scraping approach
+
+<p align="justify">
+
 <p>

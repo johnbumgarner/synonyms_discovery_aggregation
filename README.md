@@ -210,6 +210,7 @@ fastText was created by Facebook AI Research (FAIR) lab and is a library for eff
     import fasttext.util
     
     # The following was used to download a pretrained model in the English language
+    # https://fasttext.cc/docs/en/english-vectors.html
     # fasttext.util.download_model('en', if_exists='ignore')
     
     ft = fasttext.load_model('cc.en.300.bin')
@@ -246,4 +247,47 @@ fastText was created by Facebook AI Research (FAIR) lab and is a library for eff
   
 Interpreting these results is overly complex, especially for discovering synonyms within a corpus. fastText like Word2vec is an inappropriate technology to find synonyms for a specific word.  
 <p>
+  
+# Dictionary approach
 
+<p align="justify">
+  
+Using a plain old dictionary approach is possible depending on the size of the corpus and your use case for discovering and cross-referring the synonyms within the 
+corpus.
+
+    import string
+
+    word_relationship = {"father": ['dad', 'daddy', 'old man', 'pa', 'pappy', 'papa', 'pop'],
+                         "mother": ["mamma", "momma", "mama", "mammy", "mummy", "mommy", "mom", "mum"]}
+                          
+    input_text = """My mom always likes to receive mums on Mother's day."""
+
+    # converts the input text to lowercase and splits the words based on empty space.
+    wordlist = input_text.lower().split()
+    
+    # list for word frequencies
+    wordfreq = []
+
+    # count the frequencies of a word
+    for w in remove_punctuation:
+       wordfreq.append(remove_punctuation.count(w))
+
+    word_frequencies = (dict(zip(remove_punctuation, wordfreq)))
+
+    word_matches = []
+
+    for word, frequency in word_frequencies.items():
+       for keyword, synonym in word_relationship.items():
+          match = [x for x in synonym if word == x]
+          if word == keyword or match:
+            match = ' '.join(map(str, match)) is 
+            word_matches.append([keyword, match, frequency])
+  
+    for item in word_matches:
+      print(item)
+      # output
+      ['mother', 'mom', 1]
+      ['mother', '', 1]
+
+A dictionary approach is useful for a small corpus, but it is hard to scale when the corpus grows.  
+<p>

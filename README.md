@@ -319,3 +319,6 @@ One of the best approaches for discovering and aggregating synonyms is one that 
 
 The script contains comments on its usage, but if you have questions please reach out to me via email on GitHub.
 <p>
+  
+Notes:
+The code within this repository is not production ready. It was strictly designed for experimental testing purposes only.

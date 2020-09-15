@@ -202,7 +202,7 @@ Cosine similarity can range from -1 to 1 based on the angle between the two vect
 Based on the size of our corpus, Word2vec is an inappropriate technology to determine the similarities or non-similarities between words.
 </p>
 
-# fastText
+## fastText
 
 <p align="justify">
 fastText was created by Facebook AI Research (FAIR) lab and is a library for efficient learning of word representations and sentence classification. FastText combines some of the most successful concepts of Natural Language Processing and machine learning in a single module.  Some of the concepts include representing sentences with bag of words and bag of n-grams, as well as using subword information, and sharing information across classes through a hidden representation. 
@@ -248,7 +248,7 @@ fastText was created by Facebook AI Research (FAIR) lab and is a library for eff
 Interpreting these results is overly complex, especially for discovering synonyms within a corpus. fastText like Word2vec is an inappropriate technology to find synonyms for a specific word.  
 <p>
   
-# Dictionary approach
+## Dictionary approach
 
 <p align="justify">
   
@@ -291,7 +291,7 @@ Using a plain old dictionary approach is possible depending on the size of the c
 A dictionary approach is useful for a small corpus, but it is hard to scale when the corpus expands.  
 <p>
   
-# Web scraping approach
+## Web scraping approach
 
 <p align="justify">
 
@@ -311,7 +311,7 @@ Here is an basic web scraping example for thesaurus.com:
 The example above queries the API used by thesaurus.com, because the primary website employ dynamic content creation, which can severely impact automative data extraction.  Another countermeasure often used by websites are connection threshold limits.  These thresholds can be linked to the number of connections per second from a given host.  Once such a threshold is met a website can automatically drop the external host connections and in some cases block the IP address. Websites also continually modify their code, so web scrapers will require maintenance related to any code changes that impact scraping operations.
 <p>
   
-# Multi-pronged approach
+## Multi-pronged approach
 
 <p align="justify">
  

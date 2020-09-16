@@ -1,5 +1,6 @@
 
 <p align="center">
+   <! -- Graphic source: https://thesaurus.plus --> 
   <img src="https://github.com/johnbumgarner/synonyms_nlp/blob/master/graphic/discovery_picture.png" />
 </p>
 

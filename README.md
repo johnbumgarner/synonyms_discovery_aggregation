@@ -1,5 +1,7 @@
 
-                   ![Image of Yaktocat](https://github.com/johnbumgarner/synonyms_nlp/blob/master/graphic/discovery_picture.png)
+<p align="center">
+  <img src="https://github.com/johnbumgarner/synonyms_nlp/blob/master/graphic/discovery_picture.png" />
+</p>
 
 
 # Natural Language Processing synonym discovery and aggregation

@@ -61,6 +61,7 @@ Note the word "mum" is included in the synonyms for "mother". Whereas the synony
 WordNet is a lexical database for the English language, which was originally created by Princeton University. The database is currently part of the NLTK corpus
 This database can be used with the Natural Language Toolkit(NLTK) to find the meanings of words, synonyms, antonyms and other linguistica categories. 
 
+    '''
     from nltk.corpus import wordnet as wn
     
     # synsets is used to obtain synonyms for a word
@@ -74,6 +75,7 @@ This database can be used with the Natural Language Toolkit(NLTK) to find the me
        Synset('mother.n.05')
        Synset('mother.v.01')
        Synset('beget.v.01')
+    '''
    
  The output above shows that WordNet found 5 nouns and 2 verbs in its database for the word "mother."  We can gather more precise data by querying the lemmas, 
  which is the canonical form for a set of words. 

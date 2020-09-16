@@ -1,3 +1,7 @@
+
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+
+
 # Natural Language Processing synonym discovery and aggregation
 
 <p align="justify">

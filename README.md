@@ -43,7 +43,6 @@ dictionary = PyDictionary()
 synonym = dictionary.synonym('mother')
     
 print(synonym)
-# output 
 ['mother-in-law', 'female parent', 'supermom', 'mum', 'parent', 'mom', 'momma', 'para I', 'mama', 'mummy', 
 'quadripara', 'mommy', 'quintipara', 'ma', 'puerpera', 'surrogate mother', 'mater', 'primipara', 'mammy', 'mamma']
 ```
@@ -54,7 +53,6 @@ Note the word "mum" is included in the synonyms for "mother". Whereas the synony
 synonym = dictionary.synonym('mum')
     
 print(synonym)
-# output 
 ['incommunicative', 'silent', 'uncommunicative']
  ```
 </p>
@@ -65,71 +63,73 @@ print(synonym)
 WordNet is a lexical database for the English language, which was originally created by Princeton University. The database is currently part of the NLTK corpus
 This database can be used with the Natural Language Toolkit(NLTK) to find the meanings of words, synonyms, antonyms and other linguistica categories. 
 
-    from nltk.corpus import wordnet as wn
+```python
+from nltk.corpus import wordnet as wn
     
-    # synsets is used to obtain synonyms for a word
-    for synonym in wn.synsets('mother'):
-       print (synonym)
-       # output 
-       Synset('mother.n.01')
-       Synset('mother.n.02')
-       Synset('mother.n.03')
-       Synset('mother.n.04')
-       Synset('mother.n.05')
-       Synset('mother.v.01')
-       Synset('beget.v.01')
-   
+# synsets is used to obtain synonyms for a word
+for synonym in wn.synsets('mother'):
+   print (synonym)
+   Synset('mother.n.01')
+   Synset('mother.n.02')
+   Synset('mother.n.03')
+   Synset('mother.n.04')
+   Synset('mother.n.05')
+   Synset('mother.v.01')
+   Synset('beget.v.01')
+ ```
    
  The output above shows that WordNet found 5 nouns and 2 verbs in its database for the word "mother."  We can gather more precise data by querying the lemmas, 
  which is the canonical form for a set of words. 
-    
-    for synonym in wn.synsets('mother'):
-       for item in synonym.lemmas():
-          print(item)
-          # output 
-          Lemma('mother.n.01.mother')
-          Lemma('mother.n.01.female_parent')
-          Lemma('mother.n.02.mother')
-          Lemma('mother.n.03.mother')
-          Lemma('mother.n.04.mother')
-          Lemma('mother.n.05.mother')
-          Lemma('mother.v.01.mother')
-          Lemma('mother.v.01.fuss')
-          Lemma('mother.v.01.overprotect')
-          Lemma('beget.v.01.beget')
-          Lemma('beget.v.01.get')
-          Lemma('beget.v.01.engender')
-          Lemma('beget.v.01.father')
-          Lemma('beget.v.01.mother')
-          Lemma('beget.v.01.sire')
-          Lemma('beget.v.01.generate')
-          Lemma('beget.v.01.bring_forth')
-        
+ 
+ ```python
+ for synonym in wn.synsets('mother'):
+    for item in synonym.lemmas():
+       print(item)
+       Lemma('mother.n.01.mother')
+       Lemma('mother.n.01.female_parent')
+       Lemma('mother.n.02.mother')
+       Lemma('mother.n.03.mother')
+       Lemma('mother.n.04.mother')
+       Lemma('mother.n.05.mother')
+       Lemma('mother.v.01.mother')
+       Lemma('mother.v.01.fuss')
+       Lemma('mother.v.01.overprotect')
+       Lemma('beget.v.01.beget')
+       Lemma('beget.v.01.get')
+       Lemma('beget.v.01.engender')
+       Lemma('beget.v.01.father')
+       Lemma('beget.v.01.mother')
+       Lemma('beget.v.01.sire')
+       Lemma('beget.v.01.generate')
+       Lemma('beget.v.01.bring_forth')
+  ```    
  
 The output in the example above shows the synonyms for the noun and verbs for the word "mother" withing WordNet.  This output can be further refined by querying for specific parts of speech.  The example below is querying for nouns. 
 
-    for synonym in wn.synsets('mother', wn.NOUN):
-       for item in synonym.lemmas():
-          if 'mother' != item.name():
-            print(item.name())
-            # output 
-            female_parent
+```python
+for synonym in wn.synsets('mother', wn.NOUN):
+   for item in synonym.lemmas():
+      if 'mother' != item.name():
+         print(item.name()) 
+         female_parent
+```   
 
  Note the only synonym for "mother" is "female_parent."  But for the word "mom" there are 8 synonyms and not one is "mother." 
  
-    for synonym in wn.synsets('mom', wn.NOUN):
-       for item in synonym.lemmas():
-          if 'mom' != item.name():
-            print(item.name())
-            # output 
-            ma
-            mama
-            mamma
-            momma
-            mommy
-            mammy
-            mum
-            mummy       
+ ```python
+ for synonym in wn.synsets('mom', wn.NOUN):
+    for item in synonym.lemmas():
+       if 'mom' != item.name():
+         print(item.name())
+         ma
+         mama
+         mamma
+         momma
+         mommy
+         mammy
+         mum
+         mummy 
+```   
 </p>
 
 ## spaCy
@@ -141,41 +141,48 @@ The code below will compute a semantic similarity estimate using spaCy's token.s
 
 Any token associated with a score of 1.O (perfect match) or less than 0.50 have been filtered out of the final results. 
 
-    import spacy
+```python
+import spacy
     
-    # Used to download one of Spacy's core models.
-    # English Models:
-    # 1. en_core_web_lg
-    # 2. en_core_web_md
-    # 3. en_core_web_sm
-    # spacy.cli.download("en_core_web_md")
-    
-    nlp = spacy.load("en_core_web_md")
-    tokens = nlp('mom always likes receive mums mothers day')
+# Used to download one of Spacy's core models.
+# English Models:
+# 1. en_core_web_lg
+# 2. en_core_web_md
+# 3. en_core_web_sm
 
-    for token1 in tokens:
-       for token2 in tokens:
-         if token1.text != token2.text and token1.similarity(token2) > 0.50:
-            print(token1.text, token2.text, token1.similarity(token2))
-            # output
-            mom mums 0.6756202
-            mom mothers 0.62206906
-            always day 0.505295
-            mums mom 0.6756202
-            mums mothers 0.7151191
-            mothers mom 0.62206906
-            mothers mums 0.7151191
-            day always 0.505295
+# this command downloads the Spacy model
+# spacy.cli.download("en_core_web_md")
+    
+nlp = spacy.load("en_core_web_md")
+tokens = nlp('mom always likes receive mums mothers day')
+
+for token1 in tokens:
+   for token2 in tokens:
+      if token1.text != token2.text and token1.similarity(token2) > 0.50:
+        print(token1.text, token2.text, token1.similarity(token2))
+        mom mums 0.6756202
+        mom mothers 0.62206906
+        always day 0.505295
+        mums mom 0.6756202
+        mums mothers 0.7151191
+        mothers mom 0.62206906
+        mothers mums 0.7151191
+        day always 0.505295
+```  
 
 The output above correcty associated tokens, such as "mom," "mothers" and "mums," because they are synonyms of one another. But in the input sentence the word "mums" was referring to flowers, so the word's association with the "mom" and "mothers" is incorrect based on context.  For the sake of brevity, I did not included the code for the following similarities examples, because on the token section changed.  
 
-     mother father 0.82982457
-     father daddy 0.5511614
-  
+```python
+mother father 0.82982457
+father daddy 0.5511614
+ ```  
+ 
  Note that the tokens "mother" and "father" have a high similarity score, whereas the words "father" and "daddy," have a lesser similarity score.  In the example 
  below we can see that "father" and "dad" have a higher similarity score than "father" and "daddy," but a lesser score than "mother" and "father." 
  
-     father dad 0.7914408
+ ```python
+ father dad 0.7914408
+ ``` 
  
 Overall spaCy's token.similarity function did ok with determining the potential relationships between two words. The spaCy library is a powerful Natural Language Processing application, so it's worth the effort to explore the documentation to discover all the library's capabilities. 
 </p>
@@ -190,26 +197,28 @@ If your corpus only contains 50 words then Word2vec is unlikely an appropriate t
 
 The code below is only for educational purposes, because the corpus being used is too small. 
 
-    import gensim
-    from gensim.models import Word2Vec
+```python
+import gensim
+from gensim.models import Word2Vec
 
-    # Since the data is contained within a list it must be wrapped into another list, so that it can be interpreted correctly.
-    data = ['mom', 'always', 'likes', 'receive', 'mums', 'mother', 'day']
+# Since the data is contained within a list it must be wrapped into another list, so that it can be interpreted correctly.
+data = ['mom', 'always', 'likes', 'receive', 'mums', 'mother', 'day']
     
-    # size is the dimensionality of the vector, which in this case is small.
-    # corpuses consisting of tens-of-thousands of words might justify 100-dimensional word-vectors. 
-    # 
-    # window size of 2 creates vectors that scored best on the analogies-evaluation. 
-    model1 = gensim.models.Word2Vec([data], min_count=1, size=2, window=2)
+# size is the dimensionality of the vector, which in this case is small.
+# corpuses consisting of tens-of-thousands of words might justify 100-dimensional word-vectors. 
+# 
+# window size of 2 creates vectors that scored best on the analogies-evaluation. 
+model1 = gensim.models.Word2Vec([data], min_count=1, size=2, window=2)
 
-    print(f"The words 'mother' and 'mom' have a cosine similarity score of: {model1.wv.similarity('mother', 'mom')}")
-    print(f"The words 'mother' and 'mums' have a cosine similarity score of: {model1.wv.similarity('mother', 'mums')}")
-    print(f"The words 'mom' and 'mums' have a cosine similarity score of: {model1.wv.similarity('mom', 'mums')}")
-    # output
-    The words 'mother' and 'mom' have a cosine similarity score of: 0.8387100696563721
-    The words 'mother' and 'mums' have a cosine similarity score of: -0.988419771194458
-    The words 'mom' and 'mums' have a cosine similarity score of: -0.9116343259811401
-
+print(f"The words 'mother' and 'mom' have a cosine similarity score of: {model1.wv.similarity('mother', 'mom')}")
+print(f"The words 'mother' and 'mums' have a cosine similarity score of: {model1.wv.similarity('mother', 'mums')}")
+print(f"The words 'mom' and 'mums' have a cosine similarity score of: {model1.wv.similarity('mom', 'mums')}")
+ 
+The words 'mother' and 'mom' have a cosine similarity score of: 0.8387100696563721
+The words 'mother' and 'mums' have a cosine similarity score of: -0.988419771194458
+The words 'mom' and 'mums' have a cosine similarity score of: -0.9116343259811401
+``` 
+ 
 Cosine similarity can range from -1 to 1 based on the angle between the two vectors being compared. A value of 1 is a perfect relationship between word vectors (e.g., "mother" compared with "mother"), whereas a value of 0 represents no relationship between words, and a value of -1 represents a perfect opposite relationship between words. A negative similarity means the two words (e.g., "mom" compared with "mums"  are related in component, but in an opposite (or negative) fashion.  
 
 Based on the size of our corpus, Word2vec is an inappropriate technology to determine the similarities or non-similarities between words.
@@ -219,45 +228,46 @@ Based on the size of our corpus, Word2vec is an inappropriate technology to dete
 
 <p align="justify">
 fastText was created by Facebook AI Research (FAIR) lab and is a library for efficient learning of word representations and sentence classification. FastText combines some of the most successful concepts of Natural Language Processing and machine learning in a single module.  Some of the concepts include representing sentences with bag of words and bag of n-grams, as well as using subword information, and sharing information across classes through a hidden representation. 
-  
-    import fasttext.util
+
+```python
+import fasttext.util
     
-    # The following was used to download a pretrained model in the English language
-    # https://fasttext.cc/docs/en/english-vectors.html
-    # fasttext.util.download_model('en', if_exists='ignore')
+# The following was used to download a pretrained model in the English language
+# https://fasttext.cc/docs/en/english-vectors.html
+# fasttext.util.download_model('en', if_exists='ignore')
     
-    ft = fasttext.load_model('cc.en.300.bin')
+ft = fasttext.load_model('cc.en.300.bin')
     
-    # "k" is the number of items to include in the output
-    results = ft.get_nearest_neighbors('mom', k=10)
-    for item in results:
-       print(item)
-       # output 
-       (0.8316885828971863, 'father')
-       (0.8139842748641968, 'grandmother')
-       (0.8042423725128174, 'daughter')
-       (0.7595430612564087, 'aunt')
-       (0.7551708221435547, 'stepfather')
-       (0.7433159947395325, 'mom')
-       (0.7390366792678833, 'step-father')
-       (0.7379246950149536, 'stepmother')
-       (0.7268661856651306, 'step-mother')
-       (0.7265076041221619, 'sister')
-       (0.7254297137260437, 'son')
-       (0.7242798805236816, 'mother-in-law')
-       (0.7103716135025024, 'husband')
-       (0.707595944404602, 'wife')
-       (0.693300187587738, 'daughter-in-law')
-       (0.6749315857887268, 'sister-in-law')
-       (0.6736578345298767, 'mother.She')
-       (0.6697360873222351, 'granddaughter')
-       (0.6673513650894165, 'step-daughter')
-       (0.6669045686721802, 'dad')
-       (0.664728045463562, 'mother.It')
-       (0.6594554781913757, 'daughters')
-       (0.659233808517456, 'great-grandmother')
-       (0.6584458947181702, 'birth-mother')
-  
+# "k" is the number of items to include in the output
+results = ft.get_nearest_neighbors('mom', k=10)
+for item in results:
+   print(item)
+   (0.8316885828971863, 'father')
+   (0.8139842748641968, 'grandmother')
+   (0.8042423725128174, 'daughter')
+   (0.7595430612564087, 'aunt')
+   (0.7551708221435547, 'stepfather')
+   (0.7433159947395325, 'mom')
+   (0.7390366792678833, 'step-father')
+   (0.7379246950149536, 'stepmother')
+   (0.7268661856651306, 'step-mother')
+   (0.7265076041221619, 'sister')
+   (0.7254297137260437, 'son')
+   (0.7242798805236816, 'mother-in-law')
+   (0.7103716135025024, 'husband')
+   (0.707595944404602, 'wife')
+   (0.693300187587738, 'daughter-in-law')
+   (0.6749315857887268, 'sister-in-law')
+   (0.6736578345298767, 'mother.She')
+   (0.6697360873222351, 'granddaughter')
+   (0.6673513650894165, 'step-daughter')
+   (0.6669045686721802, 'dad')
+   (0.664728045463562, 'mother.It')
+   (0.6594554781913757, 'daughters')
+   (0.659233808517456, 'great-grandmother')
+   (0.6584458947181702, 'birth-mother')
+``` 
+
 Interpreting these results is overly complex, especially for discovering synonyms within a corpus. fastText like Word2vec is an inappropriate technology to find synonyms for a specific word.  
 <p>
   
@@ -267,39 +277,40 @@ Interpreting these results is overly complex, especially for discovering synonym
   
 Using a plain old dictionary approach is possible depending on the size of the corpus and your use case for discovering and cross-referencing the synonyms within the corpus.
 
-    import string
+```python
+import string
 
-    word_relationship = {"father": ['dad', 'daddy', 'old man', 'pa', 'pappy', 'papa', 'pop'],
-                         "mother": ["mamma", "momma", "mama", "mammy", "mummy", "mommy", "mom", "mum"]}
+word_relationship = {"father": ['dad', 'daddy', 'old man', 'pa', 'pappy', 'papa', 'pop'],
+                     "mother": ["mamma", "momma", "mama", "mammy", "mummy", "mommy", "mom", "mum"]}
                           
-    input_text = """My mom always likes to receive mums on Mother's day."""
+input_text = """My mom always likes to receive mums on Mother's day."""
 
-    # converts the input text to lowercase and splits the words based on empty space.
-    wordlist = input_text.lower().split()
+# converts the input text to lowercase and splits the words based on empty space.
+wordlist = input_text.lower().split()
     
-    # list for word frequencies
-    wordfreq = []
+# list for word frequencies
+wordfreq = []
 
-    # count the frequencies of a word
-    for w in remove_punctuation:
-       wordfreq.append(remove_punctuation.count(w))
+# count the frequencies of a word
+for w in remove_punctuation:
+   wordfreq.append(remove_punctuation.count(w))
+   
+word_frequencies = (dict(zip(remove_punctuation, wordfreq)))
 
-    word_frequencies = (dict(zip(remove_punctuation, wordfreq)))
+word_matches = []
 
-    word_matches = []
-
-    for word, frequency in word_frequencies.items():
-       for keyword, synonym in word_relationship.items():
-          match = [x for x in synonym if word == x]
-          if word == keyword or match:
-            match = ' '.join(map(str, match)) is 
-            word_matches.append([keyword, match, frequency])
+for word, frequency in word_frequencies.items():
+   for keyword, synonym in word_relationship.items():
+      match = [x for x in synonym if word == x]
+      if word == keyword or match:
+        match = ' '.join(map(str, match)) is 
+        word_matches.append([keyword, match, frequency])
   
-    for item in word_matches:
-      print(item)
-      # output
-      ['mother', 'mom', 1]
-      ['mother', '', 1]
+for item in word_matches:
+   print(item)
+   ['mother', 'mom', 1]
+   ['mother', '', 1]
+```
 
 A dictionary approach is useful for a small corpus, but it is hard to scale when the corpus expands.  
 <p>
@@ -312,14 +323,15 @@ Another method to acquire synonyms is through web scraping (also known as, web d
 
 Here is an basic web scraping example for thesaurus.com: 
 
-    import requests
+```python
+import requests
 
-    req = requests.get(f'https://tuna.thesaurus.com/pageData/mother')
-    dict_synonyms = req.json()['data']['definitionData']['definitions'][0]['synonyms']
-    synonyms = [r["term"] for r in dict_synonyms]
-    print(sorted(synonyms))
-    # output
-    ['ancestor', 'child-bearer', 'creator', 'forebearer', 'mom', 'mommy', 'origin', 'parent', 'predecessor', 'procreator', 'progenitor', 'source']
+req = requests.get(f'https://tuna.thesaurus.com/pageData/mother')
+dict_synonyms = req.json()['data']['definitionData']['definitions'][0]['synonyms']
+synonyms = [r["term"] for r in dict_synonyms]
+print(sorted(synonyms))
+['ancestor', 'child-bearer', 'creator', 'forebearer', 'mom', 'mommy', 'origin', 'parent', 'predecessor', 'procreator', 'progenitor', 'source']
+```
 
 The example above queries the API used by thesaurus.com, because the primary website employ dynamic content creation, which can severely impact automative data extraction.  Another countermeasure often used by websites are connection threshold limits.  These thresholds can be linked to the number of connections per second from a given host.  Once such a threshold is met a website can automatically drop the external host connections and in some cases block the IP address. Websites also continually modify their code, so web scrapers will require maintenance related to any code changes that impact scraping operations.
 <p>

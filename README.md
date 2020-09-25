@@ -36,23 +36,27 @@ The code within this repository will look at several common NLP modules used to 
 <p align="justify">
 PyDictionary is a module for Python 2.x and Python 3.x that queries synonym.com for the synonyms and antonyms of a word.  It does have some capabilities to translate words via Google Translations and obtain the definition of a word. 
 
-    from PyDictionary import PyDictionary
+```python
+from PyDictionary import PyDictionary
     
-    dictionary = PyDictionary()
-    synonym = dictionary.synonym('mother')
+dictionary = PyDictionary()
+synonym = dictionary.synonym('mother')
     
-    print(synonym)
-    # output 
-    ['mother-in-law', 'female parent', 'supermom', 'mum', 'parent', 'mom', 'momma', 'para I', 'mama', 'mummy', 
-    'quadripara', 'mommy', 'quintipara', 'ma', 'puerpera', 'surrogate mother', 'mater', 'primipara', 'mammy', 'mamma']
-    
+print(synonym)
+# output 
+['mother-in-law', 'female parent', 'supermom', 'mum', 'parent', 'mom', 'momma', 'para I', 'mama', 'mummy', 
+'quadripara', 'mommy', 'quintipara', 'ma', 'puerpera', 'surrogate mother', 'mater', 'primipara', 'mammy', 'mamma']
+```
+
 Note the word "mum" is included in the synonyms for "mother". Whereas the synonyms for the word "mum" do not include the word "mother."
 
-    synonym = dictionary.synonym('mum')
+```python
+synonym = dictionary.synonym('mum')
     
-    print(synonym)
-    # output 
-    ['incommunicative', 'silent', 'uncommunicative']
+print(synonym)
+# output 
+['incommunicative', 'silent', 'uncommunicative']
+ ```
 </p>
 
 ## WordNet

@@ -339,10 +339,7 @@ The example above queries the API used by thesaurus.com, because the primary web
 ## Multi-pronged approach
 
 <p align="justify">
- 
-One of the best approaches for discovering and aggregating synonyms is one that uses multiple methods. The Python script <b><i> synonym_finder.py </i></b> contained within this repository uses web scraping and WordNet from the Natural Language Toolkit(NLTK) to build a more comprehensive list of synonyms for specific word. The script queries 3 primary online repositories for synonyms. These repositories are <i>collinsdictionary.com</i>, <i>synonym.com</i> and <i>thesaurus.com</i>. Each of the queries is operational as of September 15, 2020. If any of these online repositories change their website code structure than the Python query function for the specific repository will need to be updated within the script.
-
-The script contains comments on its usage, but if you have questions please reach out to me via email on GitHub.
+One of the best approaches for discovering and aggregating synonyms is one that uses multiple methods. I created a Python module called <i>wordhoard</i> to handle this task. Here is the <a href="https://github.com/johnbumgarner/wordhoard">wordhoard</a> Github repository.  Here is the <i>PyPi</i> <a href="https://pypi.org/project/wordhoard">link</a>.
 <p>
   
 ## Notes:

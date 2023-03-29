@@ -4,6 +4,11 @@
   <img src="https://github.com/johnbumgarner/synonyms_nlp/blob/master/graphic/discovery_picture.png" />
 </p>
 
+<br>
+<br>
+<p align="justify">
+<b>SPECIAL NOTE:</b> This repository was my research that lead to the development of <a href="https://github.com/johnbumgarner/wordhoard">WordHoard</a>, which is a Python package for discovering and aggregating antonyms, synonyms and more.
+</p>
 
 # Synonym discovery and aggregation with Natural Language Processing
 
